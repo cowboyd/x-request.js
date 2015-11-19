@@ -27,5 +27,4 @@ build/Release
 node_modules
 
 # Don't publish the test directory to NPM.
-test
 /lib
