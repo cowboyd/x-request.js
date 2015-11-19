@@ -2,7 +2,7 @@ export default class Progress {
   constructor(target, options = {observe: ()=> {}}) {
     this.observe = options.observe;
     this.target = target;
-    this.state = new State();
+    this.state = new State({freeze: options.freeze});
     target.onloadstart = (event)=> {
       this.update({loadStart: new ProgressEvent(event)});
     };
@@ -45,8 +45,10 @@ class State {
     } else {
       Object.assign(this, change);
     }
-    Object.freeze(this.progress);
-    Object.freeze(this);
+    if (this.freeze !== false) {
+      Object.freeze(this.progress);
+      Object.freeze(this);
+    }
   }
 
   get isAborted() {
