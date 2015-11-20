@@ -25,7 +25,7 @@ or ignore any property.
 
 `x-request` derives its power by coupling complete, immutable states
 with the simplest form of reactivity known to exist: _*the
-callback*_. Furthermore, it is "just JavaScript" with absolutely
+callback*_. Furthermore, it is "Just JavaScript" with absolutely
 _zero_ third party dependencies.
 
 In this way, it can be easily embedded into the framework of your
