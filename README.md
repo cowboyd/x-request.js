@@ -145,6 +145,9 @@ state. The full schema of each state looks roughly like:
 
 The folowing options are supported in the constructor to `XRequest`:
 
+* *freeze*: By default, the states that are emitted by `XRequest` have been
+frozen with `Object.freeze()` and so are immutable in the strictest sense of the
+word. Set this option to `false` if you don't want strict immutability.
 * *observe*: a function that will be invoked every time there is a  state
 transition. It is passed the full immutable with each invocation.
 * *withCredentials:* passed directly to the underlying XHR, this says whether or
