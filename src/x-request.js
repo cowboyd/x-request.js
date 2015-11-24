@@ -32,14 +32,27 @@ export default class XRequest {
   }
 
   open(method, url) {
-    this.state.xhr.open(method, url, true);
+    return this.state.xhr.open(method, url, true);
   }
 
   send(object) {
-    this.state.xhr.send(object);
+    return this.state.xhr.send(object);
+  }
+
   abort() {
     return this.state.xhr.abort();
   }
+
+  getAllRequestHeaders() {
+    return this.state.xhr.getAllRequestHeaders();
+  }
+
+  getRequestHeader(name) {
+    return this.state.xhr.getRequestHeader(name);
+  }
+
+  setRequestHeader(name, value) {
+    return this.state.xhr.setRequestHeader(name, value);
   }
 
   update(change) {

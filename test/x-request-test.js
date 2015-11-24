@@ -69,6 +69,16 @@ describe("x-request", function() {
       expect(this.xhr.abort).to.have.been.called;
     });
   });
+
+  describe("setting headers", function() {
+    beforeEach(function() {
+      this.request.setRequestHeader("Authorization", "Bearer XYZ");
+    });
+    it("sets the headers on the underlying object", function() {
+      expect(this.xhr.setRequestHeader).to.have.been.calledWith("Authorization", "Bearer XYZ");
+    });
+  });
+
   describe("opening the request", function() {
     beforeEach(function() {
       this.originalState = this.request.state;
