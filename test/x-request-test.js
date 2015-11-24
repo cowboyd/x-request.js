@@ -61,6 +61,14 @@ describe("x-request", function() {
     expect(upload.isLengthComputable).to.equal(false);
   });
 
+  describe("aborting", function() {
+    beforeEach(function() {
+      this.request.abort();
+    });
+    it("aborts the underlying request", function() {
+      expect(this.xhr.abort).to.have.been.called;
+    });
+  });
   describe("opening the request", function() {
     beforeEach(function() {
       this.originalState = this.request.state;

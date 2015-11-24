@@ -29,6 +29,7 @@ export default class XMLHttpRequest extends XMLHttpRequestEventTarget {
       this.readyState = 1;
       this.onreadystatechange({});
     });
+    this.abort = sinon.spy();
 
     this.upload = new XMLHttpRequestEventTarget();
   }

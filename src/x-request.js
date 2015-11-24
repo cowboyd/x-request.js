@@ -37,6 +37,9 @@ export default class XRequest {
 
   send(object) {
     this.state.xhr.send(object);
+  abort() {
+    return this.state.xhr.abort();
+  }
   }
 
   update(change) {
