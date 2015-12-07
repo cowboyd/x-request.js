@@ -4,6 +4,7 @@
   "description": "Reactive XML Http Request.",
   "main": "./lib/x-request.js",
   "jsnext:main": "./src/x-request.js",
+  "files": ["src", "lib"],
   "scripts": {
     "prepublish": "babel --optional runtime src/ --out-dir lib/",
     "test": "mocha --reporter spec --full-trace ./test/index.js"
