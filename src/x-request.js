@@ -1,4 +1,5 @@
 import Progress from './progress';
+import { curry } from './curry';
 
 export default class XRequest {
   constructor(options = {}) {
@@ -31,28 +32,46 @@ export default class XRequest {
     });
   }
 
-  open(method, url) {
-    return this.state.xhr.open(method, url, true);
+  get open() {
+    let request = this;
+    return curry(function open(method, url) {
+      return request.state.xhr.open(method, url, true);
+    });
   }
 
-  send(object) {
-    return this.state.xhr.send(object);
+  get send() {
+    let request = this;
+    return curry(function send(object) {
+      return request.state.xhr.send(object);
+    });
   }
 
-  abort() {
-    return this.state.xhr.abort();
+  get abort() {
+    let request = this;
+    return function() {
+      return request.state.xhr.abort();
+    };
   }
 
-  getAllRequestHeaders() {
-    return this.state.xhr.getAllRequestHeaders();
+  get getAllRequestHeaders() {
+    let request = this;
+    return function() {
+      return request.state.xhr.getAllRequestHeaders();
+    };
   }
 
-  getRequestHeader(name) {
-    return this.state.xhr.getRequestHeader(name);
+  get getRequestHeader() {
+    let request = this;
+    return curry(function(name) {
+      return request.state.xhr.getRequestHeader(name);
+    });
   }
 
-  setRequestHeader(name, value) {
-    return this.state.xhr.setRequestHeader(name, value);
+  get setRequestHeader() {
+    let request = this;
+    return curry(function(name, value) {
+      return request.state.xhr.setRequestHeader(name, value);
+    });
   }
 
   update(change) {
