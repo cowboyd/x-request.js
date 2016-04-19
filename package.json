@@ -1,6 +1,6 @@
 {
   "name": "x-request",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Reactive XML Http Request.",
   "main": "./lib/x-request.js",
   "jsnext:main": "./src/x-request.js",
