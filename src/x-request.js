@@ -1,4 +1,5 @@
 import Progress from './progress';
+import assign from './assign';
 
 export default class XRequest {
   constructor(options = {}) {
@@ -64,7 +65,7 @@ export default class XRequest {
 
 class State {
   constructor(previous = {}, change = ()=> {}) {
-    Object.assign(this, previous, {
+    assign(this, previous, {
       readyState: previous.xhr.readyState,
       status: previous.xhr.status,
       response: previous.xhr.response
@@ -77,7 +78,7 @@ class State {
     if (change.call) {
       change(this);
     } else {
-      Object.assign(this, change);
+      assign(this, change);
     }
     if (this.freeze !== false) {
       Object.freeze(this);

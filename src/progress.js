@@ -1,3 +1,5 @@
+import assign from './assign';
+
 export default class Progress {
   constructor(target, options = {observe: ()=> {}}) {
     this.observe = options.observe;
@@ -32,7 +34,7 @@ export default class Progress {
 
 class State {
   constructor(previous = {}, change = ()=> {}) {
-    Object.assign(this, {
+    assign(this, {
       abort: null,
       error: null,
       loadStart: null,
@@ -43,7 +45,7 @@ class State {
     if (change.call) {
       change(this);
     } else {
-      Object.assign(this, change);
+      assign(this, change);
     }
     if (this.freeze !== false) {
       Object.freeze(this.progress);
